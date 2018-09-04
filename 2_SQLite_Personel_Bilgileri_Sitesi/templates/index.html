@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Personel Bilgi Sistemi</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<body>
+    
+    <div class="container">
+        <br>
+        <h2 class="text-center">Personeller Listesi</h2>
+
+        <a href="/createPage" class="btn btn-info">Yeni Personel Ekle</a>
+        <hr>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr class="text-center">
+                    <th scope="col">Id</th>
+                    <th scope="col">Ad Soyad</th>
+                    <th scope="col">Telefon</th>
+                    <th scope="col">Yaş</th>
+                    <th scope="col">Maaş</th>
+                    <th scope="col">Bölüm</th>
+                    <th scope="col">Oku</th>
+                    <th scope="col">Sil</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in personeller %}
+                    <tr class="text-center">
+                        <th scope="row">{{i.id}}</th>
+                        <td>{{i.adsoyad}}</td>
+                        <td>{{i.telefon}}</td>
+                        <td>{{i.yas}}</td>
+                        <td>{{i.maas}}</td>
+                        <td>{{i.bolum}}</td>
+                        <td><a href="/readPage/{{i.id}}" class="btn btn-success">Oku</a></td>
+                        <td><a href="/delete/{{i.id}}" class="btn btn-danger">Sil</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+</body>
+</html>
