@@ -1,9 +1,9 @@
 # Depo Hakkında
-Burada Flask Framework Kullanarak Yazdığım Bazı Örnekleri Paylaşıyorum..
+Burada Flask Framework Kullanarak Yazdığım Bazı Örnekleri Paylaşıyorum..<br />
 
 ## İçerideki Örnekler
-1-) Flask İle İlk Kişisel Site 
-2-) SQLite Personel Bilgileri Sitesi
+1-) Flask İle İlk Kişisel Site<br /> 
+2-) SQLite Personel Bilgileri Sitesi<br />
 
 ## Eklenecek Örnekler
 1-) Flask İle Blog Sitesi<br />
