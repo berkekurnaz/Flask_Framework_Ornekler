@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    
+    <nav class="navbar navbar-dark bg-info mb-3">
+        <div class="container">        
+            <a href="/" class = "navbar-brand">Github Kullanıcı Detayları Sürüm : 0.1</a>
+        </div>
+    </nav>
+
+    <div class="container searchContainer">
+        <div class="search card card-body text-center">
+            <h3>Aramak İstediğiniz Github Kullanıcısı</h3>
+            <p class="lead">
+                Kullanıcı Adını Yazın Ve Ara Butonuna Basın
+            </p>
+            <form action="/" method="post">
+                <input type="text" name="kullaniciAdi" class = "form-control" placeholder="Github Kullanıcı adı">
+                <br>
+                <button type = "submit" class ="btn btn-info">Ara</button>
+            </form>
+        </div>
+    </div>
+
+    <br>
+
+    {% if kullanici %}
+    
+        <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <center><img src="{{kullanici.avatar_url}}" width="250" /></center> 
+                <center><a href="{{kullanici.html_url}}" class="btn btn-info">Profili Göster</a>  </center>      
+            </div>
+            <div class="col-md-9">
+                <h5>Kullanıcı Adı: {{kullanici.login}}</h5>
+                <h5>İsim: {{kullanici.name}}</h5>
+                <h5>Şirket: {{kullanici.company}}</h5>
+                <h5>Blog: {{kullanici.blog}}</h5>
+                <h5>Yer: {{kullanici.location}}</h5>
+                <h5>Mail: {{kullanici.email}}</h5>
+                <a class="btn btn-info">Depo Sayısı: {{kullanici.public_repos}}</a>
+                <a class="btn btn-info">Takipçi Sayısı: {{kullanici.followers}}</a>
+                <a class="btn btn-info">Takip Sayısı: {{kullanici.following}}</a>
+            </div>
+        </div>
+        
+        <br>
+
+        <h4>Depolar</h4>
+        <table class="table table-fluid table-bordered">
+            <thead>
+                <tr>
+                <th scope="col">Depo Adı</th>
+                <th scope="col">Yıldız Sayısı</th>
+                <th scope="col">İzleyiciler</th>
+                <th scope="col">Oluşturulma Tarihi</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for depolar in depo %}
+                <tr>
+                    <td>{{depolar.name}}</td>
+                    <td><a class="btn btn-info">Yıldız Sayısı: {{depolar.stargazers_count}}</a></td>
+                    <td><a class="btn btn-info">İzleyici Sayısı: {{depolar.watchers_count}}</a></td>
+                    <td><a class="btn btn-info">{{depolar.created_at}}</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <br>
+
+        <div class="row text-center">
+            <div class="col-md-6">
+                <h4>Takipçiler Listesi</h4>
+                    <ul>
+                        {% for takipci in takipciler %}
+                            <li>{{takipci.login}}</li>
+                        {% endfor %}
+                    </ul>
+            </div>
+            <div class="col-md-6">
+                <h4>Takip Edilenler</h4>
+                    <ul>
+                        {% for takip in takipler %}
+                            <li>{{takip.login}}</li>
+                        {% endfor %}
+                    </ul>
+            </div>
+        </div>
+
+    </div>
+
+    {% endif %}
+
+    {% if hataMesaj %}
+        <div class="container text-center">
+            <h6>{{hataMesaj}}</h6>
+        </div>
+    {% else %}
+    {% endif %}
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+</html>
